@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.masthead {
+  .masthead__nav {
+    .list__item {
+      padding: 0;
+      &:hover {
+
+      }
+      a {
+        color : $color-lightest;
+        &:hover {
+          color : darken($color-lightest, 40%);
+          border-bottom: solid 1px $color-lightest;
+        }
+      }
+    }
+  }
+}
