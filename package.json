@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "dev": "concurrently \"cd ./frontend && npm run dev\" \"cd api && npm run dev\"",
+    "build": "next build",
+    "start": "next start"
+  },
+  "name": "baigneur-breton",
+  "version": "1.0.0",
+  "description": "Site du baigneur breton",
+  "main": "index.js",
+  "author": "Philippe Gibert <philippe.gibert@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^3.4.0"
+  }
+}
