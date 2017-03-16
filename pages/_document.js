@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
       <Head>
         <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
       </Head>
-      <body className="custom_class">
+      <body>
       {this.props.customValue}
       <Main />
       <NextScript />

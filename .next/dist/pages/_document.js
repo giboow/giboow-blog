@@ -57,7 +57,7 @@ var MyDocument = function (_Document) {
   (0, _createClass3.default)(MyDocument, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('html', null, _react2.default.createElement(_document.Head, null, _react2.default.createElement('style', { dangerouslySetInnerHTML: { __html: _index2.default } })), _react2.default.createElement('body', { className: 'custom_class' }, this.props.customValue, _react2.default.createElement(_document.Main, null), _react2.default.createElement(_document.NextScript, null)));
+      return _react2.default.createElement('html', null, _react2.default.createElement(_document.Head, null, _react2.default.createElement('style', { dangerouslySetInnerHTML: { __html: _index2.default } })), _react2.default.createElement('body', null, this.props.customValue, _react2.default.createElement(_document.Main, null), _react2.default.createElement(_document.NextScript, null)));
     }
   }], [{
     key: 'getInitialProps',
