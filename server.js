@@ -88,6 +88,13 @@ class Server {
 }
 
 
+import 'moment'
+import 'moment/locale/fr'
+
+
+import fetch from 'node-fetch'
+global.fetch = fetch
+
 global.rootPath = __dirname;
 global.appPath = path.join(__dirname, 'app')
 global.contentPath = path.join(__dirname, 'content')

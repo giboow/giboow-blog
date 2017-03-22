@@ -2,6 +2,7 @@ import express from 'express'
 import {initRoutes} from './core/router'
 import schema from './data/schema'
 import graphqlHTTP from 'express-graphql'
+import cors from 'express-cors'
 
 
 export default class Server {
@@ -15,6 +16,14 @@ export default class Server {
 
     initRoutes()
 
+    let corsOrigin = [];
+    if(this.isDev()) {
+      corsOrigin.push('*')
+    }
+
+    this.app.use(cors({
+      allowedOrigins: corsOrigin
+    }));
     this.app.use('/graphql', graphqlHTTP({
         schema: schema,
         graphiql: true

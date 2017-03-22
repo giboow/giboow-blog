@@ -1,12 +1,49 @@
-import Layout from '../components/layout'
+import React, {Component} from 'react'
+import Layout from '../components/Layout'
+import PostList from '../components/PostList'
 
-export default () => (
-  <Layout title="hello">
-    <div className="grid">
-      <div className="grid__column grid__column--6 grid__column--#--sm ">...</div>
-      <div className="grid__column grid__column--6 grid__column--#--md ">...</div>
-      <div className="grid__column grid__column--12 grid__column--#--lg ">...</div>
-      <div className="grid__column grid__column--12 grid__column--#--xl ">...</div>
-    </div>
-  </Layout>
-)
+
+import ApolloClient, {createNetworkInterface} from 'apollo-client';
+import gql from 'graphql-tag';
+
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: 'http://localhost:3001/graphql',
+  }),
+});
+
+const getAllPosts = async() => {
+  const query = gql`
+      query allPosts {
+        posts {
+          html, meta {
+            title,
+            date,
+            tags
+          }
+        }
+      }`
+  return await client.query({query})
+}
+
+export default class IndexPage extends Component {
+  static async getInitialProps(props) {
+    const posts = await getAllPosts()
+
+    return {posts : posts.data.posts}
+  }
+
+
+  render() {
+    const {posts} = this.props
+
+    return (
+      <Layout title="hello">
+        <div className="container">
+          <PostList posts={posts} />
+        </div>
+      </Layout>
+    )
+  }
+}

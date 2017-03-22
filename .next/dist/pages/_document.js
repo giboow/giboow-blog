@@ -57,7 +57,7 @@ var MyDocument = function (_Document) {
   (0, _createClass3.default)(MyDocument, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('html', null, _react2.default.createElement(_document.Head, null, _react2.default.createElement('style', { dangerouslySetInnerHTML: { __html: _index2.default } })), _react2.default.createElement('body', null, this.props.customValue, _react2.default.createElement(_document.Main, null), _react2.default.createElement(_document.NextScript, null)));
+      return _react2.default.createElement('html', null, _react2.default.createElement(_document.Head, null, _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, shrink-to-fit=no' }), _react2.default.createElement('link', { rel: 'stylesheet', href: 'http://fonts.googleapis.com/icon?family=Material+Icons' }), _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css' }), _react2.default.createElement('style', { dangerouslySetInnerHTML: { __html: _index2.default } }), _react2.default.createElement('script', { src: 'https://code.jquery.com/jquery-2.1.1.min.js' }), _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js' })), _react2.default.createElement('body', null, this.props.customValue, _react2.default.createElement(_document.Main, null), _react2.default.createElement(_document.NextScript, null)));
     }
   }], [{
     key: 'getInitialProps',

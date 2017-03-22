@@ -1,5 +1,6 @@
 const path = require('path')
 const glob = require('glob')
+const webpack = require('webpack')
 // This file is not going through babel transformation.
 // So, we write it in vanilla JS
 // (But you could use ES2015 features supported by your Node.js version)
@@ -39,8 +40,13 @@ module.exports = {
 
 
     config.resolve.alias = {
-      'tent-css': __dirname + "/node_modules/tent-css/dist"
+      moment: 'moment/src/moment'
     };
+
+    config.plugins.push(
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|fr|hu/),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    );
 
     // Important: return the modified config
     return config
