@@ -3,32 +3,38 @@
  */
 import {Card, CardTitle, Row, Col, Chip} from 'react-materialize'
 import moment from 'moment'
+import striptags from 'striptags'
+import {XmlEntities as entities} from 'html-entities'
+import truncate from 'truncate'
+
 export default ({post}) => {
 
-  console.log(post);
-  return (
-  <article>
-    <Card header={
-      <CardTitle
-        reveal
-        image={"https://s-media-cache-ak0.pinimg.com/originals/06/99/92/069992aeb15fcbc0a4d5012fd42662b4.jpg"}
-        waves='light'/>
-    }
-          title={post.meta.title}
-          actions={[<a href="#">Read</a>]}
-          reveal={<p>Here is some more information about this product that is
-            only revealed once clicked on.</p>}
-    >
-      <div>
-        {moment(post.meta.date).fromNow()}
-      </div>
-      <Row>
-        <Col s={12}>
-          <Chip>Hello</Chip>
+  const {html, meta} = post
+  const {tags, title} = meta
 
-          <Chip>Toto</Chip>
-        </Col>
-      </Row>
-    </Card>
-  </article>
-)}
+  return (
+    <div className="card medium hoverable">
+      <div className="card-image">
+        <img src="http://lorempixel.com/150/250/nature/6"/>
+        <span className="card-title">
+          {title}
+        </span>
+        <a className="btn-floating halfway-fab waves-effect waves-light red">
+          <i className="material-icons">add</i>
+        </a>
+      </div>
+      <div className="card-content">
+        <p className="grey-text">
+          {moment(post.meta.date).fromNow()}
+        </p>
+        <div>
+          {tags && tags.map(item => (
+            <Chip>{item}</Chip>
+          ))}
+        </div>
+        <div
+          dangerouslySetInnerHTML={{__html: truncate(striptags(entities.decode(html)), 80)}}></div>
+      </div>
+    </div>
+  )
+}
