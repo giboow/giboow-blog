@@ -87,11 +87,6 @@ class Server {
 
 }
 
-
-import 'moment'
-import 'moment/locale/fr'
-
-
 import fetch from 'node-fetch'
 global.fetch = fetch
 

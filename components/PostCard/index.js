@@ -1,7 +1,6 @@
 /**
  * Created by philippe on 21/03/2017.
  */
-import {Card, CardTitle, Row, Col, Chip} from 'react-materialize'
 import moment from 'moment'
 import striptags from 'striptags'
 import {XmlEntities as entities} from 'html-entities'
@@ -28,8 +27,8 @@ export default ({post}) => {
           {moment(post.meta.date).fromNow()}
         </p>
         <div>
-          {tags && tags.map(item => (
-            <Chip>{item}</Chip>
+          {tags && tags.map((item, index) => (
+            <div className="chip" key={index}>{item}</div>
           ))}
         </div>
         <div

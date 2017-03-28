@@ -40,12 +40,25 @@ module.exports = {
 
 
     config.resolve.alias = {
-      moment: 'moment/src/moment'
+      moment: 'moment'
     };
 
     config.plugins.push(
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|fr|hu/),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new webpack.ContextReplacementPlugin(/^\.\/locale$/, context => {
+        // check if the context was created inside the moment package
+        if (!/\/moment\//.test(context.context)) {
+          return
+        }
+        // context needs to be modified in place
+        Object.assign(context, {
+          // include only japanese, korean and chinese variants
+          // all tests are prefixed with './' so this must be part of the regExp
+          // the default regExp includes everything; /^$/ could be used to include nothing
+          regExp: /^\.\/(fr|en)/,
+          // point to the locale data folder relative to moment/src/lib/locale
+          request: '../../locale'
+        })
+      })
     );
 
     // Important: return the modified config

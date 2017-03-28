@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react'
 import Head from 'next/head'
 
+import moment from 'moment'
+import 'moment/min/locales';
 
 import LayoutHeader from './header'
 import LayoutFooter from './footer'
@@ -16,6 +18,11 @@ export default class Layout extends Component {
         PropTypes.array
       ]
     ).isRequired
+  }
+
+  componentWillMount() {
+    //init locale
+    moment.locale('fr-fr')
   }
 
   render() {
