@@ -8,32 +8,36 @@ import truncate from 'truncate'
 
 export default ({post}) => {
 
-  const {html, meta} = post
-  const {tags, title} = meta
+    const {html, meta} = post
+    const {tags, title, author} = meta
+    console.log(meta)
 
-  return (
-    <div className="card medium hoverable">
-      <div className="card-image">
-        <img src="http://lorempixel.com/150/250/nature/6"/>
-        <span className="card-title">
-          {title}
-        </span>
-        <a className="btn-floating halfway-fab waves-effect waves-light red">
-          <i className="material-icons">add</i>
-        </a>
-      </div>
-      <div className="card-content">
-        <p className="grey-text">
-          {moment(post.meta.date).fromNow()}
-        </p>
-        <div>
-          {tags && tags.map((item, index) => (
-            <div className="chip" key={index}>{item}</div>
-          ))}
+    return (
+        <div className="card hoverable small">
+
+            <div className="card-image-fab">
+                <div className="card-image">
+                    <img src="http://lorempixel.com/150/220/nature/6"/>
+                </div>
+                <a title="Lire" className="btn-floating halfway-fab waves-effect waves-light red" href="#">
+                    <i className="material-icons">chevron_right</i>
+                </a>
+            </div>
+
+            <div className="card-content">
+                <span className="card-title activator grey-text text-darken-4">{title}</span>
+
+                <div className="row valign-wrapper">
+                    <div className="col s2 center">
+                        <img src="http://lorempixel.com/150/150/nature/6" alt="" className="circle responsive-img" />
+                    </div>
+                    <div className="col s10 ">
+                        <span className="grey-text text-darken-2">
+                            {moment(post.meta.date).fromNow()} par <strong>{author}</strong> dans <strong>{post.meta.category}</strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div
-          dangerouslySetInnerHTML={{__html: truncate(striptags(entities.decode(html)), 80)}}></div>
-      </div>
-    </div>
-  )
+    )
 }

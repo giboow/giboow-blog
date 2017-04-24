@@ -18,10 +18,18 @@ const PostMetaType = new GraphQLObjectType({
       type: GraphQLDate,
       description: "Post date",
     },
+    category: {
+      type: GraphQLString,
+      description: "Post category",
+    },
     tags: {
       description: "Post date",
       type: new GraphQLList(GraphQLString),
       defaultValue: []
+    },
+    author: {
+      description: "Post author",
+      type: GraphQLString
     }
   }
 })

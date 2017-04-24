@@ -15,16 +15,6 @@ async function initRoutes() {
         new route();
       })
     )
-
-  /*
-   let routesPath = path.join(__dirname, '/../routes')
-
-   await readdir(routesPath).then((files) => {
-   files.forEach((file) => {
-   let route = require(path.join(routesPath, file)).default;
-   new route();
-   });
-   }).catch(console.error);*/
 };
 export {initRoutes}
 

@@ -17,10 +17,12 @@ const getAllPosts = async() => {
   const query = gql`
       query allPosts {
         posts {
-          html, meta {
+          html, 
+          meta {
             title,
             date,
-            tags
+            author,
+            category
           }
         }
       }`
@@ -39,7 +41,7 @@ export default class IndexPage extends Component {
     const {posts} = this.props
 
     return (
-      <Layout title="hello">
+      <Layout title="toto">
         <div className="container">
           <PostList posts={posts} />
         </div>

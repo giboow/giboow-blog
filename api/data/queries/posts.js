@@ -13,6 +13,7 @@ function getCollection() {
       let content = fs.readFileSync(file, 'utf-8')
         let document = metaMarked(content);
         document.path = path.relative(contentPath, file)
+        console.log(file)
         return document
       })
     )

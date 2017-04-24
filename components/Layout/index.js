@@ -11,7 +11,7 @@ import LayoutFooter from './footer'
 export default class Layout extends Component {
 
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     children: PropTypes.oneOfType(
       [
         PropTypes.object,
@@ -37,7 +37,7 @@ export default class Layout extends Component {
     return (
       <div>
         <Head>
-          <title>{ title }</title>
+          <title>GiBoOw Blog{ title  && ` : ${title}`}</title>
         </Head>
 
         <LayoutHeader />

@@ -17,7 +17,7 @@ export default class PostList extends Component {
       <div>
         <Row>
           {posts.map((post, index) => (
-            <Col l={6} m={6} s={12} key={index}>
+            <Col l={4} m={6} s={12} key={index}>
               <PostCard post={post}/>
             </Col>
           ))}
