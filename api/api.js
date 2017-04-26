@@ -26,7 +26,7 @@
 import "babel-core/register"
 import "babel-polyfill"
 
-import Server from './app/server'
+import Server from './server'
 import path from 'path'
 
 
