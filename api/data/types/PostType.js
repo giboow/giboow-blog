@@ -38,7 +38,8 @@ const PostType = new GraphQLObjectType({
   name: 'Post',
   fields: {
     html: {type: new GraphQLNonNull(GraphQLString)},
-    meta: {type: PostMetaType}
+    meta: {type: PostMetaType},
+    path: {type : GraphQLString}
   }
 })
 

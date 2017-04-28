@@ -14,6 +14,9 @@ export default class Server {
 
   start() {
 
+      this.app.get('/posts/*', (req, res) => {
+          return app.render(req, res, '/b', req.query)
+      });
     initRoutes()
 
     let corsOrigin = [];
@@ -28,7 +31,10 @@ export default class Server {
         schema: schema,
         graphiql: true
       })
-    )
+    );
+
+
+
 
     this.app.listen(3001, function () {
       console.log('Example app listening on port 3001!');

@@ -12,7 +12,13 @@ function getCollection() {
     .then((files) => files.map((file) => {
       let content = fs.readFileSync(file, 'utf-8')
         let document = metaMarked(content);
-        document.path = path.relative(contentPath, file)
+
+        // transform path
+        let parsedFile = path.parse(file);
+        delete parsedFile.ext
+        delete parsedFile.base
+        document.path = path.relative(contentPath, path.format(parsedFile))
+
         return document
       })
     )

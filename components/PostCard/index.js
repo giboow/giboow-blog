@@ -2,13 +2,11 @@
  * Created by philippe on 21/03/2017.
  */
 import moment from 'moment'
-import striptags from 'striptags'
-import {XmlEntities as entities} from 'html-entities'
-import truncate from 'truncate'
+import Link from 'next/link'
 
 export default ({post}) => {
 
-    const {meta} = post
+    const {meta, path} = post
     const {date, title, author, category} = meta
 
     return (
@@ -18,9 +16,11 @@ export default ({post}) => {
                 <div className="card-image">
                     <img src="http://lorempixel.com/150/220/technics/6"/>
                 </div>
-                <a title="Lire" className="btn-floating halfway-fab waves-effect waves-light red" href="#">
-                    <i className="material-icons">chevron_right</i>
-                </a>
+                <Link prefetch href={path}>
+                    <a title="Lire" className="btn-floating halfway-fab waves-effect waves-light red" >
+                        <i className="material-icons">chevron_right</i>
+                    </a>
+                </Link>
             </div>
 
             <div className="card-content">

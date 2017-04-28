@@ -66,9 +66,14 @@ class Server {
     return new Promise(resolve => {
       const handle = this.app.getRequestHandler()
 
+
+      server.get('/posts/*', (req, res) => {
+          return this.app.render(req, res, '/posts', req.query)
+      });
+
       server.get('*', (req, res) => {
         return handle(req, res)
-      })
+      });
 
       let prettyError = new PrettyError();
 
