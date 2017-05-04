@@ -68,6 +68,8 @@ class Server {
 
 
       server.get('/posts/*', (req, res) => {
+        console.log('hello');
+        req.query.path = req.url
           return this.app.render(req, res, '/posts', req.query)
       });
 

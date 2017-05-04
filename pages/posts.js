@@ -13,38 +13,44 @@ const client = new ApolloClient({
   }),
 });
 
-const getAllPosts = async() => {
-  const query = gql`
-      query allPosts {
-        posts {
+const getPost = async(path) => {
+    console.log(path)
+
+    const query = gql`
+      query getPost {
+        posts(path:${path}) {
           path,
           html, 
           meta {
             title,
             date,
             author,
-            category
+            category,
+            path(
           }
         }
       }`
   return await client.query({query})
 }
 
-export default class IndexPage extends Component {
-  static async getInitialProps(props) {
-    const posts = await getAllPosts()
+export default class PostsPage extends Component {
+  static async getInitialProps({query}) {
+    const {path} = query
+      console.log(path)
+    const post = await getPost(path)
 
-    return {posts : posts.data.posts}
+      console.log(post)
+    return {post : post.data}
   }
 
 
   render() {
-    const {posts} = this.props
+    const {post} = this.props
 
     return (
       <Layout title="toto">
         <div className="container">
-          <PostList posts={posts} />
+          <div>{post}</div>
         </div>
       </Layout>
     )

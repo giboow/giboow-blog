@@ -16,7 +16,7 @@ export default ({post}) => {
                 <div className="card-image">
                     <img src="http://lorempixel.com/150/220/technics/6"/>
                 </div>
-                <Link prefetch href={path}>
+                <Link prefetch href={"/"+path}>
                     <a title="Lire" className="btn-floating halfway-fab waves-effect waves-light red" >
                         <i className="material-icons">chevron_right</i>
                     </a>
